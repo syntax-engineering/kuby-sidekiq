@@ -33,6 +33,7 @@ module Kuby
             labels do
               add :app, context.plugin.selector_app
               add :role, ROLE
+              add :worker_name, context.name
             end
           end
 
@@ -43,6 +44,7 @@ module Kuby
               match_labels do
                 add :app, context.plugin.selector_app
                 add :role, ROLE
+                add :worker_name, context.name
               end
             end
 
@@ -60,6 +62,7 @@ module Kuby
                 labels do
                   add :app, context.plugin.selector_app
                   add :role, ROLE
+                  add :worker_name, context.name
                 end
               end
 
