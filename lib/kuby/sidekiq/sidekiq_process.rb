@@ -10,7 +10,6 @@ module Kuby
       extend ::KubeDSL::ValueFields
 
       ROLE='worker'
-      worker_name = context.name.to_s.freeze
 
       attr_reader :plugin, :name, :default_replicas
 
@@ -34,7 +33,7 @@ module Kuby
             labels do
               add :app, context.plugin.selector_app
               add :role, ROLE
-              add :worker_name, worker_name
+              add :worker_name, context.name.to_s
             end
           end
 
@@ -45,7 +44,7 @@ module Kuby
               match_labels do
                 add :app, context.plugin.selector_app
                 add :role, ROLE
-                add :worker_name, worker_name
+                add :worker_name, context.name.to_s
               end
             end
 
@@ -63,7 +62,7 @@ module Kuby
                 labels do
                   add :app, context.plugin.selector_app
                   add :role, ROLE
-                  add :worker_name, worker_name
+                  add :worker_name, context.name.to_s
                 end
               end
 
